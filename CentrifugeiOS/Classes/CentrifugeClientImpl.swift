@@ -16,7 +16,8 @@ class CentrifugeClientImpl: NSObject, CentrifugeClient, WebSocketDelegate {
     var creds: CentrifugeCredentials!
     var builder: CentrifugeClientMessageBuilder!
     var parser: CentrifugeServerMessageParser!
-    
+    var security: SSLTrustValidator?
+
     weak var delegate: CentrifugeClientDelegate?
     
     var messageCallbacks = [String : CentrifugeMessageHandler]()
@@ -33,6 +34,8 @@ class CentrifugeClientImpl: NSObject, CentrifugeClient, WebSocketDelegate {
         blockingHandler = connectionProcessHandler
         connectionCompletion = completion
         ws = WebSocket(url: URL(string: url)!)
+        ws.security = security
+        ws.disableSSLCertValidation = true
         ws.delegate = self
         ws.connect()
     }

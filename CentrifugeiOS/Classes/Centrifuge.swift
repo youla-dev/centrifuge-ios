@@ -7,6 +7,7 @@
 //
 
 import IDZSwiftCommonCrypto
+import Starscream
 
 public let CentrifugeErrorDomain = "com.Centrifuge.error.domain"
 public let CentrifugeWebSocketErrorDomain = "com.Centrifuge.error.domain.websocket"
@@ -19,13 +20,14 @@ public enum CentrifugeErrorCode: Int {
 public typealias CentrifugeMessageHandler = (CentrifugeServerMessage?, Error?) -> Void
 
 public class Centrifuge {
-    public class func client(url: String, creds: CentrifugeCredentials, delegate: CentrifugeClientDelegate) -> CentrifugeClient {
+    public class func client(url: String, creds: CentrifugeCredentials, delegate: CentrifugeClientDelegate, security: SSLTrustValidator?) -> CentrifugeClient {
         let client = CentrifugeClientImpl()
         client.builder = CentrifugeClientMessageBuilderImpl()
         client.parser = CentrifugeServerMessageParserImpl()
         client.creds = creds
         client.url = url
         client.delegate = delegate
+        client.security = security
         
         return client
     }
