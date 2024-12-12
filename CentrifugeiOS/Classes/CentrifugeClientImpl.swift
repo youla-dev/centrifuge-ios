@@ -6,8 +6,6 @@
 //
 //
 
-import Starscream
-
 typealias CentrifugeBlockingHandler = ([CentrifugeServerMessage]?, Error?) -> Void
 
 class CentrifugeClientImpl: NSObject, CentrifugeClient, WebSocketDelegate {
