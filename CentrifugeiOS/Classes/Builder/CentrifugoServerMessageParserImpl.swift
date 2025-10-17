@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 protocol CentrifugeServerMessageParser {
     func parse(data: Data) throws -> [CentrifugeServerMessage]
 }

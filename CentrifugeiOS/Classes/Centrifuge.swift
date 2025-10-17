@@ -6,6 +6,7 @@
 //
 //
 
+import Foundation
 import IDZSwiftCommonCrypto
 
 public let CentrifugeErrorDomain = "com.Centrifuge.error.domain"

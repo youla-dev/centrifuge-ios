@@ -6,7 +6,9 @@
 //
 //
 
-public protocol CentrifugeClientDelegate: class {
+import Foundation
+
+public protocol CentrifugeClientDelegate: AnyObject {
     func client(_ client: CentrifugeClient, didReceiveRefreshMessage message: CentrifugeServerMessage)
     // Possible errors:
     // - CentrifugeErrorDomain with CentrifugeErrorCode

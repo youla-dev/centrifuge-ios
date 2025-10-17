@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 typealias CentrifugeBlockingHandler = ([CentrifugeServerMessage]?, Error?) -> Void
 
 class CentrifugeClientImpl: NSObject, CentrifugeClient, WebSocketDelegate {
